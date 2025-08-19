@@ -155,6 +155,39 @@ export type Database = {
         }
         Relationships: []
       }
+      profile: {
+        Row: {
+          about_text: string | null
+          created_at: string | null
+          cta_button_text: string | null
+          full_name: string | null
+          headline: string | null
+          id: string
+          resume_button_text: string | null
+          resume_url: string | null
+        }
+        Insert: {
+          about_text?: string | null
+          created_at?: string | null
+          cta_button_text?: string | null
+          full_name?: string | null
+          headline?: string | null
+          id?: string
+          resume_button_text?: string | null
+          resume_url?: string | null
+        }
+        Update: {
+          about_text?: string | null
+          created_at?: string | null
+          cta_button_text?: string | null
+          full_name?: string | null
+          headline?: string | null
+          id?: string
+          resume_button_text?: string | null
+          resume_url?: string | null
+        }
+        Relationships: []
+      }
       projects: {
         Row: {
           created_at: string
