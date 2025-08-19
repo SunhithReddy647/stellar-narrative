@@ -12,29 +12,22 @@ import { EducationEditor } from '@/components/admin/EducationEditor';
 import { BlogsEditor } from '@/components/admin/BlogsEditor';
 
 const AdminDashboard = () => {
-  const { user, signOut, loading } = useAuth();
+  const { adminUser, adminSignOut } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (!adminUser) {
       navigate('/admin/login');
     }
-  }, [user, loading, navigate]);
+  }, [adminUser, navigate]);
 
-  const handleSignOut = async () => {
-    await signOut();
-    navigate('/');
+  const handleSignOut = () => {
+    adminSignOut();
+    navigate('/admin/login');
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
-      </div>
-    );
-  }
 
-  if (!user) {
+  if (!adminUser) {
     return null;
   }
 
@@ -45,7 +38,7 @@ const AdminDashboard = () => {
           <h1 className="text-2xl font-bold">Admin Dashboard</h1>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground">
-              Welcome, {user.email}
+              Welcome, {adminUser.email}
             </span>
             <Button 
               variant="outline" 
